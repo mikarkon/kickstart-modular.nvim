@@ -83,7 +83,12 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
-
+-- Copy from visual mode.
+vim.keymap.set('v', '<D-c>', '"+y')
+-- Paste in normal or in visual (to replace selection).
+vim.keymap.set({ 'n', 'v' }, '<D-v>', '"+p')
+-- Paste clipboard at cursor position from insert mode.
+vim.keymap.set('i', '<D-v>', '<C-r>+')
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
