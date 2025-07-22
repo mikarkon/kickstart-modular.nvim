@@ -15,6 +15,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>e', ':tabnew<CR>', { desc = 'Create tab' })
+vim.keymap.set('n', '<leader>w', ':tabclose<CR>', { desc = 'Close tab' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -36,6 +38,30 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+local desc = 'Go to tab'
+
+for i = 1, 9 do
+  vim.keymap.set('n', '<leader>' .. i, function()
+    vim.cmd('tabn ' .. i)
+  end, { desc = desc })
+end
+vim.keymap.set('n', '<leader>b', ':split<CR>', {
+  desc = 'Split window horizontally',
+  noremap = true,
+  silent = true,
+})
+
+vim.keymap.set('n', '<leader>v', ':vsplit<CR>', {
+  desc = 'Split window vertically',
+  noremap = true,
+  silent = true,
+})
+
+vim.keymap.set('n', '<C-Up>', '<C-w>+', { desc = 'Increase height', noremap = true })
+vim.keymap.set('n', '<C-Down>', '<C-w>-', { desc = 'Decrease height', noremap = true })
+vim.keymap.set('n', '<C-Right>', '<C-w>>', { desc = 'Increase width', noremap = true })
+vim.keymap.set('n', '<C-Left>', '<C-w><', { desc = 'Decrease width', noremap = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
