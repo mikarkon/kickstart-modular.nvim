@@ -15,7 +15,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('n', '<leader>e', ':tabnew<CR>', { desc = 'Create tab' })
+vim.keymap.set('n', '<leader>e', ':tabnew .<CR>', { desc = 'Create tab' })
+vim.keymap.set('n', '<leader>E', ':tab split<CR>', { desc = 'Copy current tab' })
 vim.keymap.set('n', '<leader>w', ':tabclose<CR>', { desc = 'Close tab' })
 
 -- TIP: Disable arrow keys in normal mode
@@ -39,12 +40,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
-local desc = 'Go to tab'
+local desc = 'Go to tab '
 
 for i = 1, 9 do
   vim.keymap.set('n', '<leader>' .. i, function()
     vim.cmd('tabn ' .. i)
-  end, { desc = desc })
+  end, { desc = desc .. i })
 end
 vim.keymap.set('n', '<leader>b', ':split<CR>', {
   desc = 'Split window horizontally',
@@ -76,5 +77,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
 
 -- vim: ts=2 sts=2 sw=2 et
