@@ -17,6 +17,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>e', ':tabnew .<CR>', { desc = 'Create tab' })
 vim.keymap.set('n', '<leader>E', ':tab split<CR>', { desc = 'Copy current tab' })
+vim.keymap.set('n', '<leader>r', ':Ex<CR>', { desc = 'Open file tree' })
 vim.keymap.set('n', '<leader>w', ':tabclose<CR>', { desc = 'Close tab' })
 
 -- TIP: Disable arrow keys in normal mode
@@ -77,6 +78,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
-
 
 -- vim: ts=2 sts=2 sw=2 et
