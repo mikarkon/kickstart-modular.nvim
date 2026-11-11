@@ -125,6 +125,9 @@ return {
           -- Useful when you're not sure what type a variable is and you want to see
           -- the definition of its *type*, not where it was *defined*.
           vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
+
+          -- Rename the symbol under the cursor across all references.
+          vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = buf, desc = '[L]sp [R]ename' })
         end,
       })
 
