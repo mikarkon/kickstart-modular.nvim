@@ -127,6 +127,7 @@ return {
         templ = {},
         pyright = {},
         ruff = {},
+        xmlformatter = {},
 
         -- pyright = {},
         -- rust_analyzer = {},
